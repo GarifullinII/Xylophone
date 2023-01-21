@@ -17,14 +17,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
-        print(sender.currentTitle)
         
-        playSound()
+        playSound(sender: sender)
     }
     
     
-    private func playSound() {
-        let url = Bundle.main.url(forResource: "C", withExtension: "wav")
+    private func playSound(sender: UIButton) {
+        
+        let url = Bundle.main.url(forResource: "\(sender.currentTitle ?? "No title")", withExtension: "wav")
         player = try! AVAudioPlayer(contentsOf: url!)
         player.play()
     }
